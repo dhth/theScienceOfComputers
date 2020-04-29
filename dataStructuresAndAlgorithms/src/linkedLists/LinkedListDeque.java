@@ -53,7 +53,7 @@ public class LinkedListDeque<T> {
         this.sentinelNode.setPrev(this.sentinelNode);
     }
 
-    public LinkedListDeque(LinkedListDeque other){
+    public LinkedListDeque(LinkedListDeque other) {
         this.sentinelNode = new LinkedListNode(10, null, null);
         LinkedListNode<T> currentNode = this.sentinelNode;
 
@@ -98,6 +98,41 @@ public class LinkedListDeque<T> {
         this.size = this.size + 1;
     }
 
+    public void insert(T val, int position) {
+        /* From Discussion 3:
+        https://sp19.datastructur.es/materials/discussion/disc03.pdf
+        Copied for DLL.
+        "Implement SLList.insert which takes in an integer x
+        and an integer position. It inserts x at the given position.
+        If position is after the end of the list, insert the new node
+        at the end. For example, if the SLList is 5 → 6 → 2,
+        insert(10, 1) results in 5 → 10 → 6 → 2 and if the
+        SLList is 5 → 6 → 2, insert(10, 7) results in 5 → 6 → 2 → 10.
+        Additionally, for this problem assume that position is a
+        non-negative integer."
+        * */
+        if (position >= this.size) {
+            // just add to the end
+            this.addLast(val);
+        } else if (position == 0) {
+            // just add to the start
+            this.addFirst(val);
+        } else {
+            // add somewhere in the middle of the list
+            int currentInd = 0;
+            LinkedListNode<T> currentNode = this.sentinelNode.getNext();
+            while (currentInd < position - 1) {
+                currentNode = currentNode.getNext();
+                currentInd = currentInd + 1;
+            }
+            LinkedListNode<T> newNode = new LinkedListNode<>(val,
+                    currentNode.next, currentNode);
+            currentNode.getNext().setPrev(newNode);
+            currentNode.setNext(newNode);
+            this.size = this.size + 1;
+        }
+    }
+
     public boolean isEmpty() {
         if (this.size == 0) {
             return true;
@@ -120,8 +155,8 @@ public class LinkedListDeque<T> {
         System.out.println("");
     }
 
-    public T removeFirst(){
-        if (this.size > 0){
+    public T removeFirst() {
+        if (this.size > 0) {
             this.sentinelNode.setNext(this.sentinelNode.getNext().getNext());
             this.sentinelNode.getNext().setPrev(this.sentinelNode);
             this.size = this.size - 1;
@@ -129,8 +164,8 @@ public class LinkedListDeque<T> {
         return null;
     }
 
-    public T removeLast(){
-        if (this.size > 0){
+    public T removeLast() {
+        if (this.size > 0) {
             this.sentinelNode.setPrev(this.sentinelNode.getPrev().getPrev());
             this.sentinelNode.getPrev().setNext(this.sentinelNode);
             this.size = this.size - 1;
@@ -138,14 +173,13 @@ public class LinkedListDeque<T> {
         return null;
     }
 
-    public T get(int index){
-        if (index > this.size - 1){
+    public T get(int index) {
+        if (index > this.size - 1) {
             return null;
-        }
-        else{
+        } else {
             int currentInd = 0;
             LinkedListNode<T> currentNode = this.sentinelNode.getNext();
-            while (currentInd < index){
+            while (currentInd < index) {
                 currentNode = currentNode.getNext();
                 currentInd = currentInd + 1;
             }
@@ -166,8 +200,8 @@ public class LinkedListDeque<T> {
         l.addLast(6);
         l.addFirst(1);
         l.addLast(8);
+        l.insert(3, 3);
         l.removeFirst();
         l.removeLast();
-
     }
 }
