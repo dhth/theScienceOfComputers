@@ -1,8 +1,9 @@
-package linkedLists;
+package CS61BProj1a;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ArrayDequeTest {
 
@@ -247,7 +248,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void testRemoveFirst1(){
+    public void testRemoveFirst1() {
         /*nextFirst at last index*/
         ArrayDeque<Integer> arr = new ArrayDeque();
         for (int i = 0; i < 8; i++) {
@@ -261,7 +262,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void testRemoveFirst2(){
+    public void testRemoveFirst2() {
         /*nextFirst not at last index*/
         ArrayDeque<Integer> arr = new ArrayDeque();
         for (int i = 0; i < 4; i++) {
@@ -275,7 +276,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void testRemoveFirst3(){
+    public void testRemoveFirst3() {
         /*multiple removes*/
         ArrayDeque<Integer> arr = new ArrayDeque();
         for (int i = 0; i < 3; i++) {
@@ -311,7 +312,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void testRemoveFirstWithResize1(){
+    public void testRemoveFirstWithResize1() {
         ArrayDeque<Integer> arr = new ArrayDeque();
         for (int i = 0; i < 128; i++) {
             arr.addFirst(i);
@@ -326,7 +327,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void testRemoveLast1(){
+    public void testRemoveLast1() {
         /*nextLast at last index*/
         ArrayDeque<Integer> arr = new ArrayDeque();
         for (int i = 0; i < 8; i++) {
@@ -340,7 +341,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void testRemoveLast2(){
+    public void testRemoveLast2() {
         /*nextLast not at last index*/
         ArrayDeque<Integer> arr = new ArrayDeque();
         for (int i = 0; i < 4; i++) {
@@ -354,7 +355,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void testRemoveLast3(){
+    public void testRemoveLast3() {
         /*multiple removes*/
         ArrayDeque<Integer> arr = new ArrayDeque();
         for (int i = 0; i < 7; i++) {
@@ -390,7 +391,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void testRemoveLastWithResize1(){
+    public void testRemoveLastWithResize1() {
         ArrayDeque<Integer> arr = new ArrayDeque();
         for (int i = 0; i < 128; i++) {
             arr.addFirst(i);
@@ -405,7 +406,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    public void testGet(){
+    public void testGet() {
         ArrayDeque<Integer> arr = new ArrayDeque();
         arr.addLast(5);
         arr.addLast(6);
@@ -414,10 +415,10 @@ public class ArrayDequeTest {
         arr.addFirst(3);
         arr.addFirst(2);
 
-        assertEquals(3, (int)arr.get(1));
-        assertEquals(4, (int)arr.get(2));
-        assertEquals(6, (int)arr.get(4));
-        assertEquals(7, (int)arr.get(5));
+        assertEquals(3, (int) arr.get(1));
+        assertEquals(4, (int) arr.get(2));
+        assertEquals(6, (int) arr.get(4));
+        assertEquals(7, (int) arr.get(5));
 
         arr.addFirst(1);
         arr.addFirst(0);
@@ -428,12 +429,12 @@ public class ArrayDequeTest {
         arr.addLast(10);
         arr.addLast(11);
 
-        assertEquals(-2, (int)arr.get(0));
-        assertEquals(-1, (int)arr.get(1));
-        assertEquals(4, (int)arr.get(6));
-        assertEquals(8, (int)arr.get(10));
-        assertEquals(9, (int)arr.get(11));
-        assertEquals(10, (int)arr.get(12));
+        assertEquals(-2, (int) arr.get(0));
+        assertEquals(-1, (int) arr.get(1));
+        assertEquals(4, (int) arr.get(6));
+        assertEquals(8, (int) arr.get(10));
+        assertEquals(9, (int) arr.get(11));
+        assertEquals(10, (int) arr.get(12));
 
         assertEquals(14, arr.size());
     }

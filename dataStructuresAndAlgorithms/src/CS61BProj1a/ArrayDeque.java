@@ -1,6 +1,10 @@
-package linkedLists;
+package CS61BProj1a;
 
-public class ArrayDeque<T> {
+import CS61BProj1b.Deque;
+
+public class ArrayDeque<T> implements Deque<T> {
+    private final int INIT_LENGTH = 8;
+    private final int MULTIPLYING_FACTOR = 2;
     /* Array Deque
     Complexities:
     - addFirst, addLast -> O(1) (except the case where resizing is necessary)
@@ -11,11 +15,41 @@ public class ArrayDeque<T> {
     * */
     private T[] items;
     private int size;
-    private final int INIT_LENGTH = 8;
-    private final int MULTIPLYING_FACTOR = 2;
     private int nextFirst;
     private int nextLast;
     private int currentCapacity;
+
+    public ArrayDeque() {
+        this.items = (T[]) new Object[INIT_LENGTH];
+        this.nextFirst = INIT_LENGTH - 1;
+        this.nextLast = 0;
+        this.size = 0;
+        this.currentCapacity = INIT_LENGTH;
+    }
+
+    public ArrayDeque(ArrayDeque other) {
+        this.items = (T[]) new Object[INIT_LENGTH];
+        this.nextFirst = INIT_LENGTH - 1;
+        this.nextLast = 0;
+        this.size = 0;
+        this.currentCapacity = INIT_LENGTH;
+
+        for (int i = 0; i < other.size(); i++) {
+            this.addLast((T) other.get(i));
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayDeque<Integer> arr = new ArrayDeque();
+        arr.addLast(5);
+        arr.addLast(6);
+        arr.addLast(7);
+        arr.addFirst(4);
+        System.out.println(arr);
+
+        ArrayDeque<Integer> arr2 = new ArrayDeque(arr);
+        System.out.println(arr2);
+    }
 
     /*public getter setters for
      internal properties, just to be able to test*/
@@ -57,26 +91,6 @@ public class ArrayDeque<T> {
 
     public T getItemFromInternalArray(int index) {
         return this.items[index];
-    }
-
-    public ArrayDeque() {
-        this.items = (T[]) new Object[INIT_LENGTH];
-        this.nextFirst = INIT_LENGTH - 1;
-        this.nextLast = 0;
-        this.size = 0;
-        this.currentCapacity = INIT_LENGTH;
-    }
-
-    public ArrayDeque(ArrayDeque other){
-        this.items = (T[]) new Object[INIT_LENGTH];
-        this.nextFirst = INIT_LENGTH - 1;
-        this.nextLast = 0;
-        this.size = 0;
-        this.currentCapacity = INIT_LENGTH;
-
-        for (int i = 0; i < other.size(); i++) {
-            this.addLast((T)other.get(i));
-        }
     }
 
     public void resizeUp(int capacity) {
@@ -138,6 +152,7 @@ public class ArrayDeque<T> {
         this.nextLast = this.size;
     }
 
+    @Override
     public void addFirst(T item) {
         /*
         O(1) except in the case of resizing
@@ -156,6 +171,7 @@ public class ArrayDeque<T> {
         this.size = this.size + 1;
     }
 
+    @Override
     public void addLast(T item) {
         if (this.size == this.items.length) {
             this.resizeUp(this.items.length * MULTIPLYING_FACTOR);
@@ -170,6 +186,7 @@ public class ArrayDeque<T> {
         this.size = this.size + 1;
     }
 
+    @Override
     public T removeFirst() {
         if (this.size == 0) {
             return null;
@@ -185,13 +202,14 @@ public class ArrayDeque<T> {
         this.nextFirst = indexToRemove;
         this.items[indexToRemove] = null;
 
-        while ((this.usageFactor() < 0.25) && this.currentCapacity >INIT_LENGTH) {
+        while ((this.usageFactor() < 0.25) && this.currentCapacity > INIT_LENGTH) {
             this.resizeDown(this.items.length / MULTIPLYING_FACTOR);
         }
 
         return removedItem;
     }
 
+    @Override
     public T removeLast() {
         if (this.size == 0) {
             return null;
@@ -208,17 +226,23 @@ public class ArrayDeque<T> {
         this.nextLast = indexToRemove;
         this.items[indexToRemove] = null;
 
-        while ((this.usageFactor() < 0.25) && this.currentCapacity >INIT_LENGTH) {
+        while ((this.usageFactor() < 0.25) && this.currentCapacity > INIT_LENGTH) {
             this.resizeDown(this.items.length / MULTIPLYING_FACTOR);
         }
         return removedItem;
     }
 
+    @Override
     public int size() {
         /*
-        * O(1)
-        * */
+         * O(1)
+         * */
         return this.size;
+    }
+
+    @Override
+    public void printDeque() {
+        System.out.println(this);
     }
 
     public Object[] getArray() {
@@ -243,48 +267,36 @@ public class ArrayDeque<T> {
         return (double) this.size / this.currentCapacity;
     }
 
-    public boolean isEmpty(){
-        return this.size == 0;
-    }
-
-    public T get(int index){
+    @Override
+    public T get(int index) {
         /*
-        * O(1)
-        * */
-        if ((this.size == 0) || index >= this.size){
+         * O(1)
+         * */
+        if ((this.size == 0) || index >= this.size) {
             return null;
         }
         int indexToFetch;
-        if (this.nextFirst < this.nextLast){
+        if (this.nextFirst < this.nextLast) {
             indexToFetch = this.nextFirst + 1 + index;
-        }
-        else{
-            if (this.nextFirst + 1 + index < this.currentCapacity){
+        } else {
+            if (this.nextFirst + 1 + index < this.currentCapacity) {
                 indexToFetch = this.nextFirst + 1 + index;
-            }
-            else{
+            } else {
                 indexToFetch = index - (this.currentCapacity - 1 - this.nextFirst);
             }
         }
         return this.items[indexToFetch];
     }
 
-    public void printDeque(){
-        for (int i = 0; i <this.size ; i++) {
-            System.out.print(this.get(i) + " ");
+    @Override
+    public String toString() {
+        StringBuilder returnStringSB = new StringBuilder("{ ");
+        for (int i = 0; i < this.size - 1; i++) {
+            returnStringSB.append(this.get(i));
+            returnStringSB.append(", ");
         }
-        System.out.println("");
-    }
-
-    public static void main(String[] args) {
-        ArrayDeque<Integer> arr = new ArrayDeque();
-        arr.addLast(5);
-        arr.addLast(6);
-        arr.addLast(7);
-        arr.addFirst(4);
-        arr.printDeque();
-
-        ArrayDeque<Integer> arr2 = new ArrayDeque(arr);
-        arr2.printDeque();
+        returnStringSB.append(this.get(this.size - 1));
+        returnStringSB.append(" }");
+        return returnStringSB.toString();
     }
 }
