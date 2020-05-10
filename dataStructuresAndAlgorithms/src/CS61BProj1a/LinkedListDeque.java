@@ -5,6 +5,7 @@ import CS61BProj1b.Deque;
 public class LinkedListDeque<T> implements Deque<T> {
     private final LinkedListNode sentinelNode;
     private int size;
+
     public LinkedListDeque() {
         this.sentinelNode = new LinkedListNode<>(10, null, null);
         this.sentinelNode.setNext(this.sentinelNode);
