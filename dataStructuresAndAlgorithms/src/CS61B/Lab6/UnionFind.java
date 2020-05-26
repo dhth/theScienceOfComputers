@@ -83,7 +83,7 @@ public class UnionFind {
         }
 
         //immediate parent is root, no need for path compression
-        if (sets[sets[vertex]] < 0){
+        if (sets[sets[vertex]] < 0) {
             return sets[vertex];
         }
 
