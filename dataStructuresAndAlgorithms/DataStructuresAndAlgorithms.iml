@@ -19,5 +19,6 @@
     </orderEntry>
     <orderEntry type="library" name="jh61b" level="project" />
     <orderEntry type="library" name="algs4" level="project" />
+    <orderEntry type="library" name="xchart-3.5.1" level="project" />
   </component>
 </module>

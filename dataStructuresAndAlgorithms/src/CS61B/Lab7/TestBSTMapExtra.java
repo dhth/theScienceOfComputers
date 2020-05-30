@@ -34,12 +34,12 @@ public class TestBSTMapExtra {
      * Note for testRemoveRoot:
      *
      * Just checking that c is gone (perhaps incorrectly)
-     * assumes that remove is BST-structure preserving.
+     * assumes that remove is CS61B.CLab7.BST-structure preserving.
      *
      * More exhaustive tests could be done to verify
      * implementation of remove, but that would require doing
      * things like checking for inorder vs. preorder swaps,
-     * and is unnecessary in this simple BST implementation.
+     * and is unnecessary in this simple CS61B.CLab7.BST implementation.
      */
     @Test
     public void testRemoveRoot() {

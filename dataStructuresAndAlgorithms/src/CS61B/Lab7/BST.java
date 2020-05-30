@@ -1,8 +1,8 @@
 package CS61B.Lab7;
 
 /******************************************************************************
- *  Compilation:  javac BST.java
- *  Execution:    java BST
+ *  Compilation:  javac CS61B.CLab7.BST.java
+ *  Execution:    java CS61B.CLab7.BST
  *  Dependencies: StdIn.java StdOut.java Queue.java
  *  Data files:   https://algs4.cs.princeton.edu/32bst/tinyST.txt
  *
@@ -11,7 +11,7 @@ package CS61B.Lab7;
  *  % more tinyST.txt
  *  S E A R C H E X A M P L E
  *
- *  % java BST < tinyST.txt
+ *  % java CS61B.CLab7.BST < tinyST.txt
  *  A 8
  *  C 4
  *  E 12
@@ -32,7 +32,7 @@ import edu.princeton.cs.algs4.StdOut;
 import java.util.NoSuchElementException;
 
 /**
- * The {@code BST} class represents an ordered symbol table of generic
+ * The {@code CS61B.CLab7.BST} class represents an ordered symbol table of generic
  * key-value pairs.
  * It supports the usual <em>put</em>, <em>get</em>, <em>contains</em>,
  * <em>delete</em>, <em>size</em>, and <em>is-empty</em> methods.
@@ -73,7 +73,7 @@ import java.util.NoSuchElementException;
  */
 
 public class BST<Key extends Comparable<Key>, Value> {
-    private Node root;             // root of BST
+    private Node root;             // root of CS61B.CLab7.BST
 
     /**
      * Initializes an empty symbol table.
@@ -82,7 +82,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Unit tests the {@code BST} data type.
+     * Unit tests the {@code CS61B.CLab7.BST} data type.
      *
      * @param args the command-line arguments
      */
@@ -120,7 +120,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         return size(root);
     }
 
-    // return number of key-value pairs in BST rooted at x
+    // return number of key-value pairs in CS61B.CLab7.BST rooted at x
     private int size(Node x) {
         if (x == null) return 0;
         else return x.size;
@@ -393,7 +393,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         return select(root, rank);
     }
 
-    // Return key in BST rooted at x of given rank.
+    // Return key in CS61B.CLab7.BST rooted at x of given rank.
     // Precondition: rank is in legal range.
     private Key select(Node x, int rank) {
         if (x == null) return null;
@@ -490,9 +490,9 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Returns the height of the BST (for debugging).
+     * Returns the height of the CS61B.CLab7.BST (for debugging).
      *
-     * @return the height of the BST (a 1-node tree has height 0)
+     * @return the height of the CS61B.CLab7.BST (a 1-node tree has height 0)
      */
     public int height() {
         return height(root);
@@ -504,9 +504,9 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     * Returns the keys in the BST in level order (for debugging).
+     * Returns the keys in the CS61B.CLab7.BST in level order (for debugging).
      *
-     * @return the keys in the BST in level order traversal
+     * @return the keys in the CS61B.CLab7.BST in level order traversal
      */
     public Iterable<Key> levelOrder() {
         Queue<Key> keys = new Queue<Key>();
@@ -523,7 +523,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /*************************************************************************
-     *  Check integrity of BST data structure.
+     *  Check integrity of CS61B.CLab7.BST data structure.
      ***************************************************************************/
     private boolean check() {
         if (!isBST()) StdOut.println("Not in symmetric order");
@@ -539,7 +539,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         return isBST(root, null, null);
     }
 
-    // is the tree rooted at x a BST with all keys strictly between min and max
+    // is the tree rooted at x a CS61B.CLab7.BST with all keys strictly between min and max
     // (if min or max is null, treat as empty constraint)
     // Credit: Bob Dondero's elegant solution
     private boolean isBST(Node x, Key min, Key max) {
