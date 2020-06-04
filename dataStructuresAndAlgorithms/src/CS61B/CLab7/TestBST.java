@@ -62,5 +62,6 @@ public class TestBST {
         assertEquals(0, ExperimentHelper.optimalAverageDepth(1), 0.001);
         assertEquals(1.2, ExperimentHelper.optimalAverageDepth(5), 0.001);
         assertEquals(1.625, ExperimentHelper.optimalAverageDepth(8), 0.001);
+        assertEquals(10.3, ExperimentHelper.optimalAverageDepth(5000), 0.1);
     }
 }

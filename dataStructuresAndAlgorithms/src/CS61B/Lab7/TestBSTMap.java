@@ -82,6 +82,19 @@ public class TestBSTMap {
         assertTrue(b.containsKey("hi") && b.get("hi") != null);
     }
 
+    @Test
+    public void testHeightOfTree() {
+        BSTMap<Integer, Character> b = new BSTMap<>();
+        b.put(3, 'a');
+        b.put(2, 'b');
+        b.put(5, 'c');
+        b.put(1, 'd');
+        b.put(4, 'e');
+        b.put(6, 'f');
+        b.put(7, 'g');
+        assertEquals(3, b.heightOfTree());
+    }
+
 //    public static void main(String[] args) {
 //        jh61b.junit.TestRunner.runTests(TestBSTMap.class);
 //    }

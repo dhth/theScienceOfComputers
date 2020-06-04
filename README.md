@@ -3,6 +3,7 @@ Learnings on Data Structures and Algorithms.
 # [CS61B](https://sp19.datastructur.es/)
 
 ## Modules
+- [Homework 1](/dataStructuresAndAlgorithms/src/CS61B/HW1): Java Syntax and Sound Synthesis
 - [Project 1a](/dataStructuresAndAlgorithms/src/CS61B/Proj1a)
 - [Project 1b](/dataStructuresAndAlgorithms/src/CS61B/Proj1b)
 - [Lab 5](/dataStructuresAndAlgorithms/src/CS61B/Lab5)

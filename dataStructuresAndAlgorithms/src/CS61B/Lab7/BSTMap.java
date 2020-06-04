@@ -229,6 +229,22 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B {
         return null;
     }
 
+    public int heightOfTree() {
+        return height(root, 0);
+    }
+
+    private int height(Node x, int currentHeight) {
+        if (x == null) {
+            return currentHeight - 1;
+        }
+        int leftHeight = height(x.left, currentHeight + 1);
+        int rightHeight = height(x.right, currentHeight + 1);
+        if (leftHeight >= rightHeight) {
+            return leftHeight;
+        }
+        return rightHeight;
+    }
+
     @Override
     public Iterator iterator() {
         throw new UnsupportedOperationException("Not supported");
