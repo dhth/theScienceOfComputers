@@ -1,16 +1,16 @@
 package CS61B.HW2;
 
-import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+import edu.princeton.cs.algs4.QuickFindUF;
 
-public class Percolation implements PercolationParent {
+public class PercolationWithQuickFind implements PercolationParent {
     private int[] grid;
-    private WeightedQuickUnionUF uf;
+    private QuickFindUF uf;
     private int numOpenSites;
     private int gridEdge;
     private int topSiteIndex;
     private int bottomSiteIndex;
 
-    public Percolation(int N) {
+    public PercolationWithQuickFind(int N) {
         if (N <= 0) {
             throw new IllegalArgumentException();
         }
@@ -18,12 +18,17 @@ public class Percolation implements PercolationParent {
         for (int i = 0; i < N * N; i++) {
             grid[i] = -1;
         }
-        uf = new WeightedQuickUnionUF(N * N + 2);
+        uf = new QuickFindUF(N * N + 2);
         topSiteIndex = N * N;
         bottomSiteIndex = N * N + 1;
         for (int i = 0; i < N; i++) {
             uf.union(i, topSiteIndex);
         }
+        /*
+        for (int i = N*(N-1); i <N*N ; i++) {
+           uf.union(i, bottomSiteIndex);
+        }
+         */
         numOpenSites = 0;
         gridEdge = N;
     }
@@ -101,6 +106,11 @@ public class Percolation implements PercolationParent {
         if (row == 0) {
             return (isOpen(row, col));
         }
+        /*
+        if (row == gridEdge - 1){
+            return (isOpen(row, col));
+        }
+         */
         return isConnectedToTopSite(row, col);
     }
 
