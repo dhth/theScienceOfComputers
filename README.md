@@ -10,3 +10,4 @@ Learnings on Data Structures and Algorithms.
 - [Lab 6](/dataStructuresAndAlgorithms/src/CS61B/Lab6) : Union Find
 - [Lab 7](/dataStructuresAndAlgorithms/src/CS61B/Lab7) : Binary Search Trees
 - [Challenge Lab 7](/dataStructuresAndAlgorithms/src/CS61B/CLab7) : Binary Search Tree Performance
+- [Lab 8](/dataStructuresAndAlgorithms/src/CS61B/Lab8) : Hashing

@@ -1,0 +1,53 @@
+{
+  "100": {
+    "class CS61B.Lab8.ULLMap": "0,00",
+    "class CS61B.Lab8.MyHashMap": "0,00",
+    "Java's Built-in HashMap": "0,00"
+  },
+  "1000": {
+    "class CS61B.Lab8.ULLMap": "0,01",
+    "class CS61B.Lab8.MyHashMap": "0,01",
+    "Java's Built-in HashMap": "0,00"
+  },
+  "10000": {
+    "class CS61B.Lab8.ULLMap": "0,95",
+    "class CS61B.Lab8.MyHashMap": "0,02",
+    "Java's Built-in HashMap": "0,01"
+  },
+  "20000": {
+    "class CS61B.Lab8.ULLMap": "4,25",
+    "class CS61B.Lab8.MyHashMap": "0,03",
+    "Java's Built-in HashMap": "0,01"
+  },
+  "4000": {
+    "class CS61B.Lab8.ULLMap": "0,14"
+  },
+  "40000": {
+    "class CS61B.Lab8.MyHashMap": "0,05",
+    "Java's Built-in HashMap": "0,05"
+  },
+  "50000": {
+    "class CS61B.Lab8.MyHashMap": "0,03",
+    "Java's Built-in HashMap": "0,04"
+  },
+  "80000": {
+    "class CS61B.Lab8.MyHashMap": "0,04",
+    "Java's Built-in HashMap": "0,06"
+  },
+  "100000": {
+    "class CS61B.Lab8.MyHashMap": "0,09",
+    "Java's Built-in HashMap": "0,09"
+  },
+  "200000": {
+    "class CS61B.Lab8.MyHashMap": "0,28",
+    "Java's Built-in HashMap": "0,10"
+  },
+  "300000": {
+    "class CS61B.Lab8.MyHashMap": "0,37",
+    "Java's Built-in HashMap": "0,19"
+  },
+  "400000": {
+    "class CS61B.Lab8.MyHashMap": "0,61",
+    "Java's Built-in HashMap": "0,40"
+  }
+}
