@@ -73,3 +73,5 @@ fabric.properties
 .DS_Store
 
 *$CACHE_FILE$
+
+dataStructuresAndAlgorithms/.idea/libraries/*.xml
